@@ -1,6 +1,6 @@
 <h1>ExpNo 8 : Solve Cryptarithmetic Problem,a CSP(Constraint Satisfaction Problem) using Python</h1> 
-<h3>Name:               </h3>
-<h3>Register Number/Staff Id:       </h3>
+<h3>Name: Krithiga U</h3>
+<h3>Register Number: 212223240076</h3>
 <H3>Aim:</H3>
 <p>
     To solve Cryptarithmetic Problem,a CSP(Constraint Satisfaction Problem) using Python
@@ -22,7 +22,7 @@ For this case it is like this.
               B A L L                         2 4 5 5
              ---------                       ---------
             G A M E S                       0 4 9 1 6
-Algorithm
+Algorithm:
 For this problem, we will define a node, which contains a letter and its corresponding values.<br>
 
 isValid(nodeList, count, word1, word2, word3)<br>
@@ -72,11 +72,49 @@ Begin<br>
    return false<br>
 End<br>
 <hr>
-<h2>Sample Input and Output:</h2>
+<h3>Sample Input and Output:</h3>
 SEND = 9567<br>
 MORE = 1085<br>
 <hr>
 MONEY = 10652<br>
 <hr>
-<h2>Result:</h2>
-<p> Thus a Cryptarithmetic Problem was solved using Python successfully</p>
+
+<h3>Program:</h3>
+
+```
+from itertools import permutations
+
+def solve_cryptarithmetic():
+    for perm in permutations(range(10), 8):
+        S, E, N, D, M, O, R, Y = perm
+
+        # Check for leading zeros
+        if S == 0 or M == 0:
+            continue
+
+        # Check the equation constraints
+        SEND = 1000 * S + 100 * E + 10 * N + D
+        MORE = 1000 * M + 100 * O + 10 * R + E
+        MONEY = 10000 * M + 1000 * O + 100 * N + 10 * E + Y
+
+        if SEND + MORE == MONEY:
+            return SEND, MORE, MONEY
+
+    return None
+
+solution = solve_cryptarithmetic()
+
+if solution:
+    SEND, MORE, MONEY = solution
+    print(f'SEND = {SEND}')
+    print(f'MORE = {MORE}')
+    print(f'MONEY = {MONEY}')
+else:
+    print("No solution found.")
+```
+<h3>Output:</h3>
+
+<img width="263" height="108" alt="Screenshot 2025-10-23 132134" src="https://github.com/user-attachments/assets/2236bc38-1b51-4dc7-98a1-1bdc3d784de9" />
+
+<h3>Result:</h3>
+<p> Thus a Cryptarithmetic Problem was solved using Python successfully.</p>
